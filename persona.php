@@ -2,9 +2,9 @@
 
 require_once __DIR__ ."/config.php";
 
-$method = $_SERVER['REQUEST_METHOD'];
+$method = $_POST['action'];
 switch($method) {
-    case 'POST':
+    case 'CREATE':
         $nome = htmlspecialchars($_POST['nome']);
         $cognome = htmlspecialchars($_POST['cognome']);
         $email = htmlspecialchars($_POST['email']);
@@ -21,9 +21,9 @@ switch($method) {
 
         echo "Inserimento completato.";
         break;    
-    case 'GET':
-        if (isset($_GET['id'])) {
-            $id = htmlspecialchars($_GET['id']);
+    case 'READ':
+        if (isset($_POST['id'])) {
+            $id = htmlspecialchars($_POST['id']);
 
             $sql = "SELECT * FROM persona WHERE id = :id";
             $statement = $pdo->prepare($sql);
@@ -59,8 +59,8 @@ switch($method) {
     echo "Record aggiornato con successo.";
         break;
     case 'DELETE':
-        if (isset($_GET['id'])) {
-            $id = htmlspecialchars($_GET['id']);
+        if (isset($_POST['id'])) {
+            $id = htmlspecialchars($_POST['id']);
             $sql = "DELETE FROM persona WHERE id = :id";
         
             $statement = $pdo->prepare($sql);
