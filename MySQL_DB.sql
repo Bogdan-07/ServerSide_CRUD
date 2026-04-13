@@ -1,4 +1,5 @@
-CREATE DATABASE IF NOT EXISTS crud_lato_server;
+DROP DATABASE IF EXISTS crud_lato_server;
+CREATE DATABASE crud_lato_server;
 USE crud_lato_server;
 
 CREATE TABLE persona ( id INT PRIMARY KEY AUTO_INCREMENT, nome VARCHAR(30) NOT NULL, cognome VARCHAR(30) NOT NULL, email VARCHAR(50) NOT NULL UNIQUE, data_nascita DATE NOT NULL);
